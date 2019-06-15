@@ -41,7 +41,7 @@
 \RequirePackage{longtable}
 
 % Caluclating due date
-\RequirePackage{datenumber}
+\RequirePackage{advdate}
 
 % Drawing the arrow
 \RequirePackage{tikz}
@@ -100,10 +100,7 @@
 }
 
 \newcommand*{\duedate}[1]{%
-    \setdatetoday%
-    \addtocounter{datenumber}{#1}%
-    \setdatebynumber{\thedatenumber}%
-    \datedate%
+    \AdvanceDate[#1]\today%
 }
 
 \newcommand*{\infoSectionStyle}{\hspace{2em}}
