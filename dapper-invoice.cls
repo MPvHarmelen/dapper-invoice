@@ -77,9 +77,9 @@
         bookmarksopen  = false,
         bookmarksdepth = 2,% to show sections and subsections
         pdfauthor      = {#1},
-        pdftitle       = {#2 --- Invoice \##3 for #4},
-        pdfsubject     = {Invoice \##3},
-        pdfkeywords    = {invoice, #2, #4}
+        pdftitle       = {#2 --- Factuur \##3 voor #4},
+        pdfsubject     = {Factuur \##3},
+        pdfkeywords    = {factuur, #2, #4}
     }
 }
 
@@ -88,12 +88,13 @@
 }
 
 \sodef\invoiceSpacing{}{.15em}{.4em}{.4em}
-\newcommand*{\makeheader}[2]{
+\newcommand*{\makeheader}[3]{
     \begin{minipage}[t]{.6\linewidth} {\headerStyle #1} \end{minipage}
     \hfill
-    \begin{tabular}[t]{@{} c @{}}
-        {\headerStyle \invoiceSpacing{INVOICE} \##2} \\
-        {\color{subduedColor} \today}
+    \begin{tabular}[t]{@{} r @{}}
+        {\headerStyle \invoiceSpacing{FACTUUR} \##2} \\
+        {\color{subduedColor} Factuurdatum: \today} \\
+        {\color{subduedColor} Vervaldatum: \duedate{#3}}
     \end{tabular}
 
     \addvspace{8ex}
@@ -133,11 +134,11 @@
     \begin{longtable}{c @{\hspace{1.5em}} p{.6\textwidth} r @{} l r r}
     \hline
     \noalign{\smallskip}
-    {\itemizationHeaderStyle Date} &
-    {\itemizationHeaderStyle Description} &
-    \multicolumn{2}{l}{\itemizationHeaderStyle Hours} &
-    {\itemizationHeaderStyle Rate} &
-    {\itemizationHeaderStyle Amount}
+    {\itemizationHeaderStyle Maand} &
+    {\itemizationHeaderStyle Omschrijving} &
+    \multicolumn{2}{l}{\itemizationHeaderStyle Uren} &
+    {\itemizationHeaderStyle Tarief} &
+    {\itemizationHeaderStyle Bedrag}
     \\
     \noalign{\smallskip}
     \hline
@@ -215,7 +216,7 @@
 \newcommand{\lineitem}[4]{
     {\itemizationRowStyle #1} &
     \begin{minipage}[t]{.6\textwidth}
-        \begin{itemize}[leftmargin=0pt, labelsep=1pt, itemsep=0pt] \itemizationRowStyle #4 \end{itemize}
+        \itemizationRowStyle #4
     \end{minipage} &
     {\itemizationRowStyle \@formatHoursLeft{#2}} &
     {\itemizationRowStyle \@formatHoursRight{#2}} &
