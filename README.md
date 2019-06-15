@@ -12,6 +12,17 @@ A billable-time invoice featuring style over substance.
 
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 
+
+### Installation into TeX Live
+Save this repository in `~/texmf/tex/latex/` and add the following to your preamble:
+
+```tex
+\defaultfontfeatures{Path = /home/<YOUR-USERNAME>/texmf/tex/latex/dapper-invoice/Fonts/}
+\setmainfont[ BoldFont = OpenSans-Bold, ItalicFont = OpenSans-Italic ]{OpenSans-Regular}
+\setsansfont[ BoldFont = OpenSans-Bold, ItalicFont = OpenSans-Italic ]{OpenSans-Regular}
+```
+
+
 ### Generating an Invoice
 
 #### Using TeX Live Locally
